@@ -4,17 +4,30 @@
 @{
     ViewBag.Title = "ShoppingCart";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+@{ 
+    double totalmoney = 0;
+    double tax = 0;
 }
 
 <h2 class="center">Your Items</h2>
 
 @foreach (Product p in Model)
 {
+    totalmoney += (p.Price * p.Quantity);
+    tax = (totalmoney * .08);
     <div>
-        @p.Name
-        @p.Quantity
-        $@p.Price
-        Total Price is $@(p.Quantity*p.Price)
+        <img class="cart-img" src="@Url.Content("~/Content/img/" + p.ImgName)" />
+       
+        <p>$@p.Price</p>
+
+
+        <p>$@(p.Quantity * p.Price)</p>
         
     </div>
 }
+<div>Sub Total :@totalmoney.ToString("C")</div>
+<div>Tax :@((totalmoney * .08).ToString("C"))</div>
+<div>Total Amount Due:@((totalmoney + tax).ToString("C"))</div>
