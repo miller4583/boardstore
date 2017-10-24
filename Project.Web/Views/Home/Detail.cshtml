@@ -1,0 +1,44 @@
+﻿@using Project.Web.Models;
+@model Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="center">@Model.Name</h2>
+
+<div class="float-clear"><img class="detail-img" src="@Url.Content("~/Content/img/" + Model.ImgName)" /></div>
+
+<div class="detail">
+    <div class="detail-name">$@Model.Price</div>
+    <div class="star">
+        @if (Model.Rating > 4)
+        {
+            <img class="width" src="@Url.Content("~/Content/img/5-star.png")" />
+        }
+        else if (Model.Rating > 3)
+        {
+            <img class="width" src="@Url.Content("~/Content/img/4-star.png")" />
+        }
+        else if (Model.Rating > 2)
+        {
+            <img class="width" src="@Url.Content("~/Content/img/3-star.png")" />
+        }
+        else if (Model.Rating > 1)
+        {
+            <img class="width" src="@Url.Content("~/Content/img/2-star.png")" />
+        }
+        else
+        {
+            <img class="width" src="@Url.Content("~/Content/img/1-star.png")" />
+        }
+    </div>
+    <p><span class="bold">Description: </span>@Model.Description</p>
+</div>
+
+<form action="@Url.Action("Detail","Home", new {quantity = Model.Quantity, id = Model.ProductID})" method="post">
+    @Html.LabelFor(m => m.Quantity)
+    @Html.TextBoxFor(m => m.Quantity)
+    <button>Add To Cart</button>
+
+</form>

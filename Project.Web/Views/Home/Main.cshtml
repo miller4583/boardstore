@@ -1,0 +1,17 @@
+﻿@using Project.Web.Models;
+@model List<Category>
+@{
+    ViewBag.Title = "Main";
+}
+
+<h2 class="center">Main Menu</h2>
+
+
+
+@foreach (Category c in Model)
+            {
+    <div class="cat-container">
+        <a href="@Url.Action("CategoryProducts","Home", new { id = c.CatID } )"><img src="@Url.Content("~/Content/img/" + c.CatImg)" class="Cat-img" /></a>
+        <div class="cat-name">@c.CatName</div>
+    </div>
+}

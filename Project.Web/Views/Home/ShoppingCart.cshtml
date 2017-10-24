@@ -1,0 +1,20 @@
+﻿@using Project.Web.Models;
+@model List<Product>
+
+@{
+    ViewBag.Title = "ShoppingCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="center">Your Items</h2>
+
+@foreach (Product p in Model)
+{
+    <div>
+        @p.Name
+        @p.Quantity
+        $@p.Price
+        Total Price is $@(p.Quantity*p.Price)
+        
+    </div>
+}

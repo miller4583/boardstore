@@ -1,0 +1,23 @@
+﻿@using Project.Web.Models;
+@model List<Product>
+
+@{
+    ViewBag.Title = "CategoryProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="center">Products</h2>
+
+@foreach (Product p in Model)
+{
+    <div class="bottom-space">
+        <a href="@Url.Action("Detail","Home", new { id = p.ProductID} )"><img src="@Url.Content("~/Content/img/" + p.ImgName)" class="pro-list-img" /></a>
+        <div class="pro-list-name">@p.Name</div>
+        @if( p.Sold >= 100)
+        {
+            <div class="fire">HOT SELLER!!!</div>
+        }
+
+    </div>
+}
+
