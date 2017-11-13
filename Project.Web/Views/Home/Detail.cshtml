@@ -36,7 +36,7 @@
     <p><span class="bold">Description: </span>@Model.Description</p>
 </div>
 
-<form action="@Url.Action("Detail","Home", new {quantity = Model.Quantity, id = Model.ProductID})" method="post">
+<form class="text-center" action="@Url.Action("Detail","Home", new {quantity = Model.Quantity, id = Model.ProductID})" method="post">
     @Html.LabelFor(m => m.Quantity)
     @Html.TextBoxFor(m => m.Quantity)
     <button>Add To Cart</button>

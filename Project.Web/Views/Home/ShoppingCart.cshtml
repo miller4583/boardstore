@@ -7,27 +7,41 @@
 
 
 }
-@{ 
+@{
     double totalmoney = 0;
     double tax = 0;
 }
 
 <h2 class="center">Your Items</h2>
 
-@foreach (Product p in Model)
-{
-    totalmoney += (p.Price * p.Quantity);
-    tax = (totalmoney * .08);
-    <div>
-        <img class="cart-img" src="@Url.Content("~/Content/img/" + p.ImgName)" />
-       
-        <p>$@p.Price</p>
-
-
-        <p>$@(p.Quantity * p.Price)</p>
-        
+    @foreach (Product p in Model)
+    {
+        totalmoney += (p.Price * p.Quantity);
+        tax = (totalmoney * .08);
+        <div class="large-bottom table-middle">
+            <img class="cart-img" src="@Url.Content("~/Content/img/" + p.ImgName)" />
+            <table>
+                <thead>
+                    <tr>
+                       <td><strong>Quantity</strong></td>
+                        <td><strong>Price Per Item</strong></td>
+                        <td><strong>Item Subtotal</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p>@p.Quantity</p></td>
+                        <td><p>$@p.Price</p></td>
+                        <td><p>$@(p.Quantity * p.Price)</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+    
+    <div class="total-right">
+        <h4>Sub Total :@totalmoney.ToString("C")</h4>
+        <h4>Tax :@((totalmoney * .08).ToString("C"))</h4>
+        <h4>Total Amount Due :@((totalmoney + tax).ToString("C"))</h4>
     </div>
-}
-<div>Sub Total :@totalmoney.ToString("C")</div>
-<div>Tax :@((totalmoney * .08).ToString("C"))</div>
-<div>Total Amount Due:@((totalmoney + tax).ToString("C"))</div>
+

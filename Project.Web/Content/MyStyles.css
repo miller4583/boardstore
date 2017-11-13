@@ -74,6 +74,24 @@ p{
     height:auto;
 }
 .cart-img{
-    width: 10%;
+    width: 15%;
     height:auto;
+    float:left;
+}
+.total-right {
+    float: right;
+    margin-bottom : 20px;
+}
+.large-bottom{
+    margin-bottom:150px;
+}
+.table-middle {
+    vertical-align: middle;
+}
+table{
+    border-spacing:15px;
+}
+td{
+    width: 50%;
+    text-align:center;
 }
